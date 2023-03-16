@@ -23,7 +23,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, onMounted } from 'vue'
+  import { computed } from 'vue'
   import image404 from './images/404.svg'
   import imageMeteor from './images/meteor.svg'
   import imageAstronaut from './images/astronaut.svg'
@@ -42,8 +42,6 @@
     str += `background: url(${imageMars}) no-repeat bottom center;`
     return str
   })
-
-  onMounted(() => {})
 </script>
 
 <style lang="scss" scoped>

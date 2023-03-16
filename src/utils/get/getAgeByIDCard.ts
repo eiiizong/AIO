@@ -1,12 +1,12 @@
 import { getIsDev } from '@/utils/get'
 
-const isDev = getIsDev()
-
 /**
  * 根据身份证号（使用该方法前先校验身份证号格式是否正确）获取年龄
  * @param {String} value 身份证号码
  */
 const getAgeByIDCard = (value: string): string => {
+  const isDev = getIsDev()
+
   // 格式化身份证的值 去除空格 将 X 转化为 x
   value = (value + '').trim().toUpperCase()
 
