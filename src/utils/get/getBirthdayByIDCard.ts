@@ -1,4 +1,4 @@
-import { getIsDev } from './getIsDev'
+import { getIsDev } from '@/utils/get'
 
 const isDev = getIsDev()
 
@@ -12,9 +12,8 @@ const getBirthdayByIDCard = (value: string): string => {
 
   let birthday = ''
   if (!value) {
-    if (isDev) {
-      console.error('身份证号码为空，请检查！')
-    }
+    // eslint-disable-next-line no-console
+    isDev && console.error('身份证号码为空，请检查！')
   } else {
     const len = value.length
 
@@ -23,9 +22,8 @@ const getBirthdayByIDCard = (value: string): string => {
     } else if (len === 18) {
       birthday = value.slice(6, 14)
     } else {
-      if (isDev) {
-        console.error('身份证号码只能为15位或18位，其它不合法，请检查！')
-      }
+      // eslint-disable-next-line no-console
+      isDev && console.error('身份证号码只能为15位或18位，其它不合法，请检查！')
     }
 
     // 通过正则表达式来指定输出格式为: 1990-01-01

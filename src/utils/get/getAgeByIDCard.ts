@@ -1,4 +1,4 @@
-import { getIsDev } from './getIsDev'
+import { getIsDev } from '@/utils/get'
 
 const isDev = getIsDev()
 
@@ -15,9 +15,8 @@ const getAgeByIDCard = (value: string): string => {
   if (value) {
     const len = value.length
     if (len != 15 && len != 18) {
-      if (isDev) {
-        console.error('身份证号码只能为15位或18位，其它不合法，请检查！')
-      }
+      // eslint-disable-next-line no-console
+      isDev && console.error('身份证号码只能为15位或18位，其它不合法，请检查！')
     } else {
       let birthday = ''
       // 处理15位的身份证号码从号码中得到生日和性别代码
@@ -49,9 +48,8 @@ const getAgeByIDCard = (value: string): string => {
       age = _age + ''
     }
   } else {
-    if (isDev) {
-      console.error('身份证号码为空，请检查！')
-    }
+    // eslint-disable-next-line no-console
+    isDev && console.error('身份证号码为空，请检查！')
   }
   return age
 }
