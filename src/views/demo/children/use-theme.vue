@@ -16,25 +16,25 @@
       <el-button type="primary" @click="onClickSetTheme('default')">Default</el-button>
       <div class="demo-color-block">
         <span class="demonstration">选择主题色</span>
-        <el-color-picker v-model="color" @change="onClickSetTheme($event)" />
+        <el-color-picker v-model="theme.color" @change="onClickSetTheme($event)" />
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import type { Ref } from 'vue'
-  import { ref } from 'vue'
-  import { useStoreThemeName } from '@/stores/modules'
+  import { ref, toRefs } from 'vue'
+  import { useStoreTheme } from '@/stores/modules'
 
-  const color: Ref<string | undefined> = ref('')
   const date = ref('')
-  const storeTheme = useStoreThemeName()
 
-  color.value = storeTheme.getStoreTheme.color
+  const storeTheme = useStoreTheme()
+  const { theme } = toRefs(storeTheme)
 
   // 切换主题
-  const onClickSetTheme = (type) => {}
+  const onClickSetTheme = (type: string) => {
+    console.log(type)
+  }
 </script>
 
 <style lang="scss" scoped>

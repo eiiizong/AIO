@@ -1,2 +1,2 @@
-export type { StoreThemeName } from './StoreThemeName'
+export type { StoreTheme } from './StoreTheme'
 export type { StoreUserInfo } from './StoreUserInfo'

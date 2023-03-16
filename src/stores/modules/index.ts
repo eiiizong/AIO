@@ -1,3 +1,3 @@
 export { useStoreLanguage } from './useStoreLanguage'
-export { useStoreThemeName } from './useStoreThemeName'
+export { useStoreTheme } from './useStoreTheme'
 export { useStoreUserInfo } from './useStoreUserInfo'
