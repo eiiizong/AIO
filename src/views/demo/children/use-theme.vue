@@ -10,12 +10,13 @@
         <el-date-picker v-model="date" type="date" placeholder="Pick a day" />
       </div>
     </div>
+
     <div class="demo-toolbar">
-      <el-button @click="handleSetTheme('dark')">Dark</el-button>
-      <el-button type="primary" @click="handleSetTheme('default')">Default</el-button>
+      <el-button @click="onClickSetTheme('dark')">Dark</el-button>
+      <el-button type="primary" @click="onClickSetTheme('default')">Default</el-button>
       <div class="demo-color-block">
         <span class="demonstration">选择主题色</span>
-        <el-color-picker v-model="color" @change="handleSetTheme($event)" />
+        <el-color-picker v-model="color" @change="onClickSetTheme($event)" />
       </div>
     </div>
   </div>
@@ -24,24 +25,16 @@
 <script setup lang="ts">
   import type { Ref } from 'vue'
   import { ref } from 'vue'
-  import { useStoreTheme } from '@/stores/modules'
+  import { useStoreThemeName } from '@/stores/modules'
 
   const color: Ref<string | undefined> = ref('')
   const date = ref('')
-  const storeTheme = useStoreTheme()
+  const storeTheme = useStoreThemeName()
 
   color.value = storeTheme.getStoreTheme.color
 
   // 切换主题
-  const handleSetTheme = (type: string | null) => {
-    if (type === 'dark') {
-      storeTheme.updateStoreTheme({ name: 'dark' })
-    } else if (type === 'default') {
-      storeTheme.updateStoreTheme({ name: 'default' })
-    } else {
-      storeTheme.updateStoreTheme({ color: type ? type : '' })
-    }
-  }
+  const onClickSetTheme = (type) => {}
 </script>
 
 <style lang="scss" scoped>
