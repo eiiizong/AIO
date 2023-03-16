@@ -22,30 +22,30 @@
 </template>
 
 <script setup lang="ts">
-import type { Ref } from 'vue'
-import { ref } from 'vue'
-import { useStoreTheme } from '@/stores/modules'
+  import type { Ref } from 'vue'
+  import { ref } from 'vue'
+  import { useStoreTheme } from '@/stores/modules'
 
-const color: Ref<string | undefined> = ref('')
-const date = ref('')
-const storeTheme = useStoreTheme()
+  const color: Ref<string | undefined> = ref('')
+  const date = ref('')
+  const storeTheme = useStoreTheme()
 
-color.value = storeTheme.getStoreTheme.color
+  color.value = storeTheme.getStoreTheme.color
 
-// 切换主题
-const handleSetTheme = (type: string | null) => {
-  if (type === 'dark') {
-    storeTheme.updateStoreTheme({ name: 'dark' })
-  } else if (type === 'default') {
-    storeTheme.updateStoreTheme({ name: 'default' })
-  } else {
-    storeTheme.updateStoreTheme({ color: type ? type : '' })
+  // 切换主题
+  const handleSetTheme = (type: string | null) => {
+    if (type === 'dark') {
+      storeTheme.updateStoreTheme({ name: 'dark' })
+    } else if (type === 'default') {
+      storeTheme.updateStoreTheme({ name: 'default' })
+    } else {
+      storeTheme.updateStoreTheme({ color: type ? type : '' })
+    }
   }
-}
 </script>
 
 <style lang="scss" scoped>
-.demo-color-block {
-  margin-left: 20px;
-}
+  .demo-color-block {
+    margin-left: 20px;
+  }
 </style>

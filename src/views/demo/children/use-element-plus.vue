@@ -18,12 +18,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-const date = ref('')
+  import { ref } from 'vue'
+  const date = ref('')
 </script>
 
 <style lang="scss" scoped>
-.use-element-plus {
-  width: 100%;
-}
+  .use-element-plus {
+    width: 100%;
+  }
 </style>

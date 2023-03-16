@@ -12,15 +12,15 @@
 </template>
 
 <script setup lang="ts">
-import { toRefs } from 'vue'
-import { useStoreUserInfo } from '@/stores/modules'
+  import { toRefs } from 'vue'
+  import { useStoreUserInfo } from '@/stores/modules'
 
-const storeUserInfo = useStoreUserInfo()
-const { userInfo } = toRefs(storeUserInfo)
+  const storeUserInfo = useStoreUserInfo()
+  const { userInfo } = toRefs(storeUserInfo)
 </script>
 
 <style lang="scss" scoped>
-.use-element-plus {
-  width: 100%;
-}
+  .use-element-plus {
+    width: 100%;
+  }
 </style>
