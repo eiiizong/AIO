@@ -1,14 +1,14 @@
 <template>
-  <el-config-provider locale="en">
+  <el-config-provider>
     <RouterView />
   </el-config-provider>
 </template>
 
 <script setup lang="ts">
-  // import { reactive, watch, watchEffect } from 'vue'
+  import { watchEffect } from 'vue'
   // import { useI18n } from 'vue-i18n'
   // import { useStoreLanguage } from '@/stores/modules'
-  // import { useSetTheme } from '@/hooks/project'
+  import { useSetTheme } from '@/hooks'
   // import { getEnvData } from '@/utils/get'
 
   // const { messages, locale } = useI18n()
@@ -37,7 +37,7 @@
   //   experimentalFeatures: {}
   // })
 
-  // watchEffect(useSetTheme)
+  watchEffect(useSetTheme)
   // // 监听语言改变
   // watch(
   //   () => storeLanguage.language,

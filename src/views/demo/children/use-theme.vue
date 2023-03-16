@@ -16,13 +16,15 @@
       <el-button type="primary" @click="onClickSetTheme('default')">Default</el-button>
       <div class="demo-color-block">
         <span class="demonstration">选择主题色</span>
-        <el-color-picker v-model="theme.color" @change="onClickSetTheme($event)" />
+        <el-color-picker v-model="theme.color" @change="onChangeThemeColor($event)" />
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+  import type { Color } from '@/types'
+
   import { ref, toRefs } from 'vue'
   import { useStoreTheme } from '@/stores/modules'
 
@@ -33,7 +35,12 @@
 
   // 切换主题
   const onClickSetTheme = (type: string) => {
-    console.log(type)
+    // console.log(type)
+    storeTheme.updateStoreTheme({ name: type as 'default' })
+  }
+
+  const onChangeThemeColor = (color: Color) => {
+    storeTheme.updateStoreTheme({ color })
   }
 </script>
 
