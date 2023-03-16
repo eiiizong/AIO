@@ -19,7 +19,9 @@ export default defineConfig(({ mode }) => {
       /* CSS 预处理器 */
       preprocessorOptions: {
         scss: {
-          additionalData: '@import "src/assets/styles/var.scss";'
+          additionalData: `
+            @use "~/assets/styles/element/index.scss" as *;
+          `
         }
       },
       devSourcemap: true

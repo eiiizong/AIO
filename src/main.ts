@@ -1,5 +1,24 @@
 import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
 
-createApp(App).mount('#app')
+import App from '@/App.vue'
+// 引入路由
+import router from '@/router'
+// 引入全局状态管理
+import pinia from '@/stores'
+// 引入国际化语言
+import i18n from '@/languages'
+
+// 引入样式 normalize.css
+import 'normalize.css/normalize.css'
+// 全局公用样式
+import '@/assets/styles/index.scss'
+// 引入样式 ElMessage
+import 'element-plus/theme-chalk/src/message.scss'
+
+const app = createApp(App)
+
+app.use(pinia)
+app.use(router)
+app.use(i18n)
+
+app.mount('#app')
