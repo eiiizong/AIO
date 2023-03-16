@@ -13,6 +13,10 @@ router.beforeEach((to, from, next) => {
   const storeUserInfo = useStoreUserInfo()
   const { token } = storeUserInfo.getStoreUserInfo
   const { meta, fullPath } = to
+  const { matched } = from
+  // eslint-disable-next-line no-console
+  console.log(matched)
+
   const { title, requireAuth } = meta
 
   if (title) {
