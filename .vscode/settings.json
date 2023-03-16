@@ -15,5 +15,6 @@
   // vue文件的默认格式化工具选择prettier
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "i18n-ally.localesPaths": ["src/languages", "src/languages/locales"]
 }

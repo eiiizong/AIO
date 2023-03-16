@@ -1,5 +1,5 @@
 <template>
-  <el-config-provider>
+  <el-config-provider locale="en">
     <RouterView />
   </el-config-provider>
 </template>
