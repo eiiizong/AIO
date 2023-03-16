@@ -13,27 +13,27 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue'
-import { requestSPGetHi05List } from '@/server/api'
-import type { RequestSPGetHi05List } from '@/server/types'
+  import { reactive } from 'vue'
+  import { requestSPGetHi05List } from '@/server/api'
+  import type { RequestSPGetHi05List } from '@/server/types'
 
-interface CustomData {
-  hi05List: [RequestSPGetHi05List.Hi05ListItem] | []
-}
+  interface CustomData {
+    hi05List: [RequestSPGetHi05List.Hi05ListItem] | []
+  }
 
-const customData: CustomData = reactive({
-  hi05List: []
-})
-
-const handleRequest = () => {
-  requestSPGetHi05List().then((res) => {
-    customData.hi05List = res.lists.hi05List.list
+  const customData: CustomData = reactive({
+    hi05List: []
   })
-}
+
+  const handleRequest = () => {
+    requestSPGetHi05List().then((res) => {
+      customData.hi05List = res.lists.hi05List.list
+    })
+  }
 </script>
 
 <style lang="scss" scoped>
-.use-element-plus {
-  width: 100%;
-}
+  .use-element-plus {
+    width: 100%;
+  }
 </style>

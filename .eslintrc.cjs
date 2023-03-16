@@ -26,7 +26,12 @@ module.exports = {
     // 允许props、emit可以声明不使用
     '@typescript-eslint/no-unused-vars': [
       'error',
-      { vars: 'all', args: 'all', varsIgnorePattern: 'props|emit', ignoreRestSiblings: false }
+      {
+        vars: 'all',
+        args: 'all',
+        varsIgnorePattern: 'props|emit',
+        ignoreRestSiblings: false
+      }
     ],
     // 关闭vue文件和组件命名校验
     'vue/multi-word-component-names': 0,
@@ -58,13 +63,7 @@ module.exports = {
         multiline: 'never'
       }
     ],
-    'prettier/prettier': [
-      'error',
-      {
-        trailingComma: 'none',
-        endOfLine: 'auto' // 不让prettier检测文件每行结束的格式
-      }
-    ],
+    'prettier/prettier': ['error', {}, {}],
     '@typescript-eslint/no-namespace': [
       'error',
       {

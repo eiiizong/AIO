@@ -14,27 +14,27 @@
 <script setup lang="scss"></script>
 
 <style lang="scss" scoped>
-.not-found {
-  background-color: #7395ff;
-  padding-top: 140px;
-  img {
-    width: 500px;
-    margin: 0 auto;
-  }
-  .title {
-    h2 {
-      color: #fff;
-      font-size: 36px;
-      letter-spacing: 4px;
-      text-align: center;
-      line-height: 120px;
+  .not-found {
+    background-color: #7395ff;
+    padding-top: 140px;
+    img {
+      width: 500px;
+      margin: 0 auto;
     }
-    h4 {
-      color: #fff;
-      font-size: 18px;
-      line-height: 38px;
-      text-align: center;
+    .title {
+      h2 {
+        color: #fff;
+        font-size: 36px;
+        letter-spacing: 4px;
+        text-align: center;
+        line-height: 120px;
+      }
+      h4 {
+        color: #fff;
+        font-size: 18px;
+        line-height: 38px;
+        text-align: center;
+      }
     }
   }
-}
 </style>
