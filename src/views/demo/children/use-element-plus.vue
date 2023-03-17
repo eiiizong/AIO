@@ -1,6 +1,6 @@
 <template>
   <div class="use-element-plus">
-    <div class="demo-title">Element Puls 使用</div>
+    <div class="demo-title">{{ useGetRouteQueryData('name') }}</div>
     <div class="demo-content">
       <div class="demo-content-row">
         <el-button>Default</el-button>
@@ -19,6 +19,8 @@
 
 <script setup lang="ts">
   import { ref } from 'vue'
+  import { useGetRouteQueryData } from '@/hooks'
+
   const date = ref('')
 </script>
 

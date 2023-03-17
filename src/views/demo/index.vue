@@ -51,17 +51,7 @@
     {
       id: '05',
       path: 'use-theme',
-      name: '使用 theme 示例'
-    },
-    {
-      id: '06',
-      path: 'use-pinia',
-      name: '使用 pinia 示例'
-    },
-    {
-      id: '07',
-      path: 'use-theme',
-      name: '使用 theme 示例'
+      name: '切换主题示例'
     }
   ])
 </script>

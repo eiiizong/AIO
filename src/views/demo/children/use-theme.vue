@@ -7,7 +7,7 @@
         <el-button type="primary">测试按钮</el-button>
       </div>
       <div class="demo-content-row">
-        <el-date-picker v-model="date" type="date" placeholder="Pick a day" />
+        <el-date-picker v-model="date" type="date" placeholder="测试选择日期" />
       </div>
     </div>
 
