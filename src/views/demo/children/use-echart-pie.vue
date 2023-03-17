@@ -1,8 +1,8 @@
 <template>
   <div class="use-echart-pie">
-    <div class="demo-title">使用示例</div>
+    <div class="demo-title">{{ useGetRouteQueryData('name') }}</div>
     <div class="demo-content">
-      <div id="chart" style="width: 600px; height: 600px"></div>
+      <div class="echart" id="chart" style="width: 600px; height: 600px"></div>
     </div>
     <div class="demo-toolbar"></div>
   </div>
@@ -12,6 +12,7 @@
   import type { ECharts, EChartsOption } from 'echarts'
   import { init } from 'echarts'
   import { onMounted } from 'vue'
+  import { useGetRouteQueryData } from '@/hooks'
 
   onMounted(() => {
     const charEle = document.getElementById('chart') as HTMLElement

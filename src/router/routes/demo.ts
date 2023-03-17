@@ -50,6 +50,14 @@ const routeDemo = {
       }
     },
     {
+      path: '',
+      component: () => import('@/views/demo/children/use-theme.vue'),
+      meta: {
+        title: '示例 use-theme',
+        requireAuth: false
+      }
+    },
+    {
       path: 'use-theme',
       component: () => import('@/views/demo/children/use-theme.vue'),
       meta: {

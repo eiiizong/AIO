@@ -3,7 +3,13 @@
     <div class="left">
       <ul>
         <li v-for="item in data" :key="item.id">
-          <RouterLink :to="'/demo/' + item.path">{{ item.name }}</RouterLink>
+          <RouterLink
+            :to="{
+              path: '/demo/' + item.path,
+              query: { name: item.name }
+            }">
+            {{ item.name }}
+          </RouterLink>
         </li>
       </ul>
     </div>
@@ -35,7 +41,7 @@
     {
       id: '03',
       path: 'use-language',
-      name: '使用 language 示例'
+      name: '切换 language 示例'
     },
     {
       id: '04',
@@ -72,11 +78,12 @@
 
     .right {
       flex: 1;
-      overflow: hidden;
       background-color: $bgc;
       border-radius: $br;
       padding: 20px;
       height: 100%;
+      overflow: auto;
+      @include scrollBar(4px, 4px, #333, #eee);
     }
     .left {
       background-color: $bgc;
@@ -102,7 +109,6 @@
             &.active {
               text-decoration: underline;
               color: $primary;
-              font-weight: 500;
             }
           }
         }

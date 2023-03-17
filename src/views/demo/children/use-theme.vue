@@ -1,6 +1,6 @@
 <template>
   <div class="use-element-plus">
-    <div class="demo-title">主题切换</div>
+    <div class="demo-title">{{ useGetRouteQueryData('name') }}</div>
 
     <div class="demo-content">
       <div class="demo-content-row">
@@ -27,6 +27,7 @@
 
   import { ref, toRefs } from 'vue'
   import { useStoreTheme } from '@/stores/modules'
+  import { useGetRouteQueryData } from '@/hooks'
 
   const date = ref('')
 
