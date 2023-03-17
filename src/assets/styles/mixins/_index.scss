@@ -1,8 +1,9 @@
-@use './libs/center-flex';
-@use './libs/center-line-height';
-@use './libs/center-position-margin';
-@use './libs/center-position-transform';
-@use './libs/no-select';
-@use './libs/shade';
-@use './libs/text-overflow';
-@use './libs/tint';
+@forward './libs/center-flex';
+@forward './libs/center-line-height';
+@forward './libs/center-position-margin';
+@forward './libs/center-position-transform';
+@forward './libs/no-select';
+@forward './libs/scrollbar';
+@forward './libs/shade';
+@forward './libs/text-overflow';
+@forward './libs/tint';

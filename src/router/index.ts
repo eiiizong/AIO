@@ -13,15 +13,14 @@ router.beforeEach((to, from, next) => {
   const storeUserInfo = useStoreUserInfo()
   const { token } = storeUserInfo.getStoreUserInfo
   const { meta, fullPath } = to
-  const { matched } = from
-  // eslint-disable-next-line no-console
-  console.log(matched)
-
   const { title, requireAuth } = meta
 
   if (title) {
     document.title = title as string
   }
+
+  // eslint-disable-next-line no-console
+  console.log('router.beforeEach from', from)
 
   // 判断该路由是否需要登录权限 requireAuth 可以在路由元信息指定哪些页面需要登录权限
   if (requireAuth) {
