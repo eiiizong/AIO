@@ -88,10 +88,11 @@ video {
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: 100%;
+  font-size: inherit;
   font: inherit;
   font-weight: normal;
   vertical-align: baseline;
+  outline: 0;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -137,6 +138,7 @@ a {
   outline: none;
   color: #16418a;
   text-decoration: none;
+  backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
 a:focus {

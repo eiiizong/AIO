@@ -20,7 +20,7 @@ export default defineConfig(({ mode }) => {
       preprocessorOptions: {
         scss: {
           additionalData: `
-            @use "~/assets/styles/element/index.scss" as *;
+            @use "@/assets/styles/variables/_index.scss" as *;
           `
         }
       },
@@ -54,7 +54,7 @@ export default defineConfig(({ mode }) => {
         '/api': {
           target: env.VITE_API_REQUEST_URL,
           changeOrigin: true,
-          rewrite: path => path.replace(/^\/api/, '')
+          rewrite: (path) => path.replace(/^\/api/, '')
         }
       }
     }

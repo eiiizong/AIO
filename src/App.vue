@@ -52,4 +52,5 @@
 <style lang="scss">
   // 字体文件引入
   @import '@/assets/iconfont/index.scss';
+  @import '@/assets/styles/index.scss';
 </style>
