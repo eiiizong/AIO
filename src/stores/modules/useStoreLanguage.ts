@@ -1,3 +1,4 @@
+import type { StoreLanguage } from '@/stores/types'
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
@@ -15,11 +16,11 @@ import { defineStore } from 'pinia'
 const useStoreLanguage = defineStore(
   'storeLanguage',
   () => {
-    const language = ref('zhCn')
+    const language = ref<StoreLanguage>('zh-cn')
 
     const getStoreLanguage = computed(() => language.value)
 
-    function updateStoreLanguage(data: string) {
+    function updateStoreLanguage(data: StoreLanguage) {
       language.value = data
     }
 

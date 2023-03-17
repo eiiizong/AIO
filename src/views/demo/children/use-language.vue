@@ -22,6 +22,7 @@
 </template>
 
 <script setup lang="ts">
+  import type { StoreLanguage } from '@/stores/types'
   import { ref } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useStoreLanguage } from '@/stores/modules'
@@ -32,7 +33,7 @@
   const value1 = ref('')
   const text = ref('testMessage.userName')
 
-  const handleChangeLanguage = (type: string) => {
+  const handleChangeLanguage = (type: StoreLanguage) => {
     locale.value = type
     storeLanguage.updateStoreLanguage(type)
   }

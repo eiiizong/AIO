@@ -6,7 +6,7 @@ import router from '@/router'
 // 引入全局状态管理
 import pinia from '@/stores'
 // 引入国际化语言
-// import i18n from '@/languages'
+import i18n from '@/languages'
 
 // 引入样式 normalize.css
 import 'normalize.css/normalize.css'
@@ -19,6 +19,6 @@ const app = createApp(App)
 
 app.use(pinia)
 app.use(router)
-// app.use(i18n)
+app.use(i18n)
 
 app.mount('#app')

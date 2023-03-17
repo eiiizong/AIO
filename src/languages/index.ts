@@ -12,4 +12,5 @@ const i18n = createI18n({
   fallbackWarn: false,
   messages
 })
+
 export default i18n
