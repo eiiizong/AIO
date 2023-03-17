@@ -1,5 +1,5 @@
 {
-  "name": "AIO",
+  "name": "aio",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,7 +7,7 @@
     "dev": "vite --host --open",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix"
+    "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx"
   },
   "dependencies": {
     "@vueuse/core": "^9.13.0",
@@ -21,6 +21,7 @@
     "nprogress": "^0.2.0",
     "pinia": "^2.0.33",
     "pinia-plugin-persistedstate": "^3.1.0",
+    "qs": "^6.11.1",
     "use-element-plus-theme": "^0.0.3",
     "vue": "^3.2.45",
     "vue-i18n": "^9.3.0-beta.16",

@@ -1,7 +1,8 @@
-import axios from 'axios'
 import type { AxiosRequestConfig, Method } from 'axios'
 
-// 定义接口
+/**
+ * 定义接口类型
+ */
 interface PendingType {
   url?: string
   method?: Method
@@ -10,11 +11,15 @@ interface PendingType {
   cancel: any
 }
 
-// 取消重复请求
+/**
+ * 正在请求的数组
+ */
 const pending: Array<PendingType> = []
-const CancelToken = axios.CancelToken
 
-// 移除重复请求
+/**
+ * 取消重复请求
+ * @param config
+ */
 const axiosRemovePending = (config: AxiosRequestConfig) => {
   for (const key in pending) {
     const item: number = +key
@@ -27,7 +32,7 @@ const axiosRemovePending = (config: AxiosRequestConfig) => {
       JSON.stringify(list.data) === JSON.stringify(config.data)
     ) {
       // 执行取消操作
-      list.cancel('操作太频繁，请稍后再试')
+      list.cancel('操作太频繁，请稍后再试！')
       // 从数组中移除记录
       pending.splice(item, 1)
     }

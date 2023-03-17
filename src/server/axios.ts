@@ -3,9 +3,10 @@ import axios from 'axios'
 import type { Method, AxiosRequestConfig } from 'axios'
 import { ElMessage } from 'element-plus'
 import axiosErrorHandle from './axiosErrorHandle'
+import { getEnvData } from '@/utils/get'
 
-// @ts-ignore：process未找到错误 => 需要该文件在vscode工作区的根目录下，才不会有错误提示。
-const { VITE_API_REQUEST_URL, VITE_OPEN_DATA_ENCRYPTION } = process.env
+const ruquestUrl = getEnvData('VITE_API_REQUEST_URL')
+const openDataEncryption = getEnvData('VITE_OPEN_DATA_ENCRYPTION')
 
 // 定义接口
 interface PendingType {

@@ -3,7 +3,7 @@ interface AnyObject {
 }
 
 // 定义常用接口请求类型
-namespace Request {
+declare namespace Request {
   // 结果错误数据类型
   export interface ResultError {
     errorCode: string

@@ -1,11 +1,12 @@
 import { ElMessage } from 'element-plus'
+
 import axiosRouteToLogin from './axiosRouteToLogin'
 
 /**
  * 请求失败后的错误统一处理
  * @param {number} status 请求失败的状态码
  */
-const axiosErrorHandle = (status: number, resMsg = ''): void => {
+const axiosErrorHandle = (status: number): void => {
   // 状态码判断
   switch (status) {
     case 302:
