@@ -1,6 +1,7 @@
-// request.ts
 import axios from './axios'
-import qs from 'qs'
+import { AES_Encrypt } from './aes'
+import { getEnvData } from '@/utils/get'
+// import qs from 'qs'
 
 /**
  * 请求数据
@@ -15,38 +16,48 @@ import qs from 'qs'
  */
 const request = (
   url: string,
-  data: any = null,
-  headers: any = null,
+  params: any = null,
+  // headers: any = null,
   method = 'POST'
   // loadingConfig = null,
   // isShowLoading = true,
   // isShowErrorMsg = true
 ): Promise<any> => {
-  if (method.toUpperCase() === 'GET') {
-    return new Promise((resolve, reject) => {
-      axios
-        .get(url, { params: data, headers })
-        .then((res) => {
-          resolve(res)
-        })
-        .catch((err) => {
-          reject(err)
-        })
-    })
-  } else if (method.toUpperCase() === 'POST') {
-    return new Promise((resolve, reject) => {
-      axios
-        .post(url, qs.stringify(data), { headers })
-        .then((res) => {
-          resolve(res)
-        })
-        .catch((err) => {
-          reject(err)
-        })
-    })
-  } else {
-    return Promise.reject('method参数仅支持GET和POST，请传入正确的参数！！！')
+  const openEncryption = getEnvData('VITE_OPEN_DATA_ENCRYPTION')
+  method = method.trim().toUpperCase()
+  params = {
+    ...params,
+    chb004: '02' // 调用渠道
   }
+
+  if (openEncryption === 'true') {
+    params = JSON.stringify(params)
+    params = AES_Encrypt(params)
+    params = encodeURIComponent(params)
+  }
+
+  return new Promise((resolve, reject) => {
+    let promise: any = null
+
+    if (method === 'GET') {
+      promise = axios.get(url, {
+        params
+      })
+    } else if (method === 'POST') {
+      promise = axios.post(url, params)
+    } else {
+      reject('method参数仅支持GET和POST，请传入正确的参数！！！')
+    }
+
+    promise
+      .then((res: any) => {
+        console.log(res)
+        resolve(res)
+      })
+      .catch((err: any) => {
+        reject(err)
+      })
+  })
 }
 
 export { request }

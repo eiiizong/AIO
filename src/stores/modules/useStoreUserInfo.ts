@@ -16,7 +16,7 @@ import { defineStore } from 'pinia'
 const useStoreUserInfo = defineStore(
   'storeUserInfo',
   () => {
-    const userInfo = ref<StoreUserInfo>({})
+    const userInfo = ref<StoreUserInfo>({ token: 'ceshi' })
 
     const getStoreUserInfo = computed(() => userInfo.value)
 

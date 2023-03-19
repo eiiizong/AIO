@@ -91,9 +91,7 @@ const removePending = (config: AxiosRequestConfig) => {
  */
 const instance = axios.create({
   headers: {
-    // 传输请求头
-    'Content-Type': 'application/json;charset=UTF-8',
-    'Access-Control-Allow-Origin-Type': '*'
+    'Content-Type': 'application/json;charset=UTF-8' // 传参方式json
   },
   // 请求时长
   timeout: 1000 * 30,
@@ -111,6 +109,8 @@ instance.interceptors.request.use(
   (config) => {
     const storeUserInfo = useStoreUserInfo()
     const { userInfo } = storeUserInfo
+    console.log('interceptors.request', config)
+
     removePending(config)
     config.cancelToken = new CancelToken((callback) => {
       const { url, method, params, data } = config
