@@ -20,7 +20,7 @@ const pending: Array<PendingType> = []
  * 取消重复请求
  * @param config
  */
-const axiosRemovePending = (config: AxiosRequestConfig) => {
+const removePending = (config: AxiosRequestConfig) => {
   for (const key in pending) {
     const item: number = +key
     const list: PendingType = pending[key]
@@ -39,4 +39,4 @@ const axiosRemovePending = (config: AxiosRequestConfig) => {
   }
 }
 
-export default axiosRemovePending
+export default removePending

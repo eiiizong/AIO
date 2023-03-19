@@ -1,8 +1,5 @@
-import request from '@/server/request'
-import type { RequestSPGetHi05List } from '@/server/types'
-
-type SuccessResult = RequestSPGetHi05List.SPGetHi05ListSuccessResult
-type ErrorResult = RequestSPGetHi05List.SPGetHi05ListErrorResult
+import type { RequestSPGetHi05ListSuccessResult } from '@/server/types'
+import { request } from '@/server/axios'
 
 /**
  * api 获取审批系统政策文件列表
@@ -23,7 +20,7 @@ const requestSPGetHi05List = (
   pageSize = 10
   // isShowLoading = true,
   // isShowErrorToast = true
-): Promise<SuccessResult> => {
+): Promise<RequestSPGetHi05ListSuccessResult> => {
   const data = {
     methodNamedesc: '获取审批系统政策文件列表',
     methodName: 'getHi05List',
