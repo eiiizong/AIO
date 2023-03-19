@@ -35,10 +35,10 @@ const requestSPGetHi05List = (
   return new Promise((resolve, reject) => {
     request('/frontRestService/frontBcpDataRestService/getWebServiceDataTwo', data)
       .then((res) => {
-        resolve(res as SuccessResult)
+        resolve(res)
       })
       .catch((err) => {
-        reject(err as ErrorResult)
+        reject(err)
       })
   })
 }

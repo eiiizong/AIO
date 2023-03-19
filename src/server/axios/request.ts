@@ -15,13 +15,13 @@ import qs from 'qs'
  */
 const request = (
   url: string,
-  data: any,
-  headers: any,
+  data: any = null,
+  headers: any = null,
   method = 'POST'
   // loadingConfig = null,
   // isShowLoading = true,
   // isShowErrorMsg = true
-) => {
+): Promise<any> => {
   if (method.toUpperCase() === 'GET') {
     return new Promise((resolve, reject) => {
       axios
@@ -45,7 +45,7 @@ const request = (
         })
     })
   } else {
-    return new Error('method参数仅支持GET和POST，请传入正确的参数！！！')
+    return Promise.reject('method参数仅支持GET和POST，请传入正确的参数！！！')
   }
 }
 

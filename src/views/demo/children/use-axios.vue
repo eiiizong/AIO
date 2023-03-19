@@ -15,19 +15,16 @@
 <script setup lang="ts">
   import { reactive } from 'vue'
   import { requestSPGetHi05List } from '@/server/api'
-  import type { RequestSPGetHi05List } from '@/server/types'
 
-  interface CustomData {
-    hi05List: [RequestSPGetHi05List.Hi05ListItem] | []
-  }
-
-  const customData: CustomData = reactive({
+  const customData = reactive({
     hi05List: []
   })
 
   const handleRequest = () => {
     requestSPGetHi05List().then((res) => {
-      customData.hi05List = res.lists.hi05List.list
+      console.log(res, 'requestSPGetHi05List')
+
+      // customData.hi05List = res.lists.hi05List.list
     })
   }
 </script>

@@ -9,14 +9,14 @@ const routeDemo = {
     requireAuth: false
   },
   children: [
-    // {
-    //   path: 'use-axios',
-    //   component: () => import('@/views/demo/children/use-axios.vue'),
-    //   meta: {
-    //     title: '示例 use-axios',
-    //     requireAuth: false
-    //   }
-    // },
+    {
+      path: 'use-axios',
+      component: () => import('@/views/demo/children/use-axios.vue'),
+      meta: {
+        title: '示例 use-axios',
+        requireAuth: false
+      }
+    },
     {
       path: 'use-echart-pie',
       component: () => import('@/views/demo/children/use-echart-pie.vue'),
