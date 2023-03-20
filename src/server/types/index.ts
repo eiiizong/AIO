@@ -1,1 +1,1 @@
-export type { RequestSPGetHi05ListSuccessResult } from './RequestSPGetHi05List'
+export type { W017SuccessResultListItem, W017SuccessResult } from './w017'

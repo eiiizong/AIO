@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="demo-toolbar">
-      <el-button type="primary" @click="handleRequest">调用接口</el-button>
+      <el-button type="primary" @click="onClick">调用接口</el-button>
     </div>
   </div>
 </template>
@@ -20,11 +20,9 @@
     hi05List: []
   })
 
-  const handleRequest = () => {
-    requestSPGetHi05List().then((res) => {
+  const onClick = () => {
+    requestSPGetHi05List(1, 10).then((res) => {
       console.log(res, 'requestSPGetHi05List')
-
-      // customData.hi05List = res.lists.hi05List.list
     })
   }
 </script>

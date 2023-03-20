@@ -71,12 +71,14 @@ const removePending = (config: AxiosRequestConfig) => {
     const index: number = +key
     const item: Pending = pending[key]
 
+    const { url, method, params, data } = config
+    const { url: url_item, method: method_item, params: params_item, data: data_item } = item
     // 当前请求在数组中存在时执行函数体
     if (
-      item.url === config.url &&
-      item.method === config.method &&
-      JSON.stringify(item.params) === JSON.stringify(config.params) &&
-      JSON.stringify(item.data) === JSON.stringify(config.data)
+      url === url_item &&
+      method === method_item &&
+      JSON.stringify(params) === JSON.stringify(params_item) &&
+      JSON.stringify(data) === JSON.stringify(data_item)
     ) {
       // 执行取消操作
       item.cancel('操作太频繁，请稍后再试')
@@ -91,14 +93,19 @@ const removePending = (config: AxiosRequestConfig) => {
  */
 const instance = axios.create({
   headers: {
-    'Content-Type': 'application/json;charset=UTF-8' // 传参方式json
+    'Content-Type': 'application/json;charset=UTF-8', // 传参方式json
+    'Access-Control-Allow-Origin-Type': '*'
   },
   // 请求时长
   timeout: 1000 * 30,
   // 请求的base地址
   baseURL: apiRequstUrl,
   // 跨域请求时是否需要使用凭证
-  withCredentials: false
+  withCredentials: false,
+  // `responseType` 表示浏览器将要响应的数据类型
+  // 选项包括: 'arraybuffer', 'document', 'json'(默认值), 'text', 'stream'
+  // 浏览器专属：'blob'
+  responseType: 'json'
 })
 
 /**
@@ -107,9 +114,11 @@ const instance = axios.create({
  */
 instance.interceptors.request.use(
   (config) => {
+    // eslint-disable-next-line no-console
+    console.log('interceptors.request config=> ', config)
+
     const storeUserInfo = useStoreUserInfo()
     const { userInfo } = storeUserInfo
-    console.log('interceptors.request', config)
 
     removePending(config)
     config.cancelToken = new CancelToken((callback) => {
