@@ -1,12 +1,14 @@
 // index.ts
-import axios, { AxiosRequestConfig, Method } from 'axios'
+import axios, { AxiosRequestConfig, Method, AxiosInstance } from 'axios'
 import { ElMessage } from 'element-plus'
 
 import { getEnvData } from '@/utils/get'
 import { useStoreUserInfo } from '@/stores/modules'
 import errorHandle from './errorHandle'
 
-// 定义接口
+/**
+ * 定义接口
+ */
 interface Pending {
   url?: string
   method?: Method | string
@@ -91,7 +93,7 @@ const removePending = (config: AxiosRequestConfig) => {
 /**
  * 实例化请求配置
  */
-const instance = axios.create({
+const instance: AxiosInstance = axios.create({
   headers: {
     'Content-Type': 'application/json;charset=UTF-8', // 传参方式json
     'Access-Control-Allow-Origin-Type': '*'

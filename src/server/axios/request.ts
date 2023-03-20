@@ -18,10 +18,11 @@ const request = (
   url: string,
   params: any = null,
   headers: any = null,
-  method = 'POST'
-  // loadingConfig = null,
-  // isShowLoading = true,
-  // isShowErrorMsg = true
+  timeout = 3000,
+  method = 'POST',
+  loadingConfig = null,
+  isShowLoading = true,
+  isShowErrorMsg = true
 ): Promise<any> => {
   const openEncryption = getEnvData('VITE_OPEN_DATA_ENCRYPTION')
   method = method.trim().toUpperCase()
@@ -40,9 +41,19 @@ const request = (
     console.log(method, params, 99999)
 
     let promise: any = null
-
     if (method === 'POST') {
-      promise = axios.post(url, params, { headers, method })
+      promise = axios({
+        url,
+        timeout,
+        headers,
+        method,
+        data: params,
+        isShowLoading,
+        loadingConfig,
+        isShowErrorMsg
+      })
+    } else if (method === 'GET') {
+      promise = axios({ url, timeout, headers, method, params })
     } else {
       reject('method参数仅支持GET和POST，请传入正确的参数！！！')
     }
