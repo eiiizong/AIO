@@ -24,13 +24,19 @@ const request = (
   isShowLoading = true,
   isShowErrorMsg = true
 ): Promise<any> => {
+  /**
+   * 是否开启加密
+   */
   const openEncryption = getEnvData('VITE_OPEN_DATA_ENCRYPTION')
   method = method.trim().toUpperCase()
+
+  // params 统一添加默认参数
   params = {
     ...params,
     chb004: '02' // 调用渠道
   }
 
+  // 处理加密的参数
   if (openEncryption === 'true') {
     params = JSON.stringify(params)
     params = AES_Encrypt(params)
@@ -38,9 +44,7 @@ const request = (
   }
 
   return new Promise((resolve, reject) => {
-    console.log(method, params, 99999)
-
-    let promise: any = null
+    let promise
     if (method === 'POST') {
       promise = axios({
         url,
@@ -53,15 +57,30 @@ const request = (
         isShowErrorMsg
       })
     } else if (method === 'GET') {
-      promise = axios({ url, timeout, headers, method, params })
+      promise = axios({
+        url,
+        timeout,
+        headers,
+        method,
+        params,
+        isShowLoading,
+        loadingConfig,
+        isShowErrorMsg
+      })
     } else {
       reject('method参数仅支持GET和POST，请传入正确的参数！！！')
+      return
     }
 
     promise
-      .then((res: any) => {
-        console.log(res, 12312432424)
-        resolve(res)
+      .then((res) => {
+        const { data, status } = res
+        if (status === 200) {
+          console.log(data, 12312432424)
+          resolve(data)
+        } else {
+          reject(res)
+        }
       })
       .catch((err: any) => {
         reject(err)

@@ -7,7 +7,7 @@ import { useStoreUserInfo } from '@/stores/modules'
 import errorHandle from './errorHandle'
 
 /**
- * 定义接口
+ * 定义接口类型
  */
 interface Pending {
   url?: string
