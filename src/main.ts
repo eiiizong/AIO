@@ -14,6 +14,7 @@ import 'normalize.css/normalize.css'
 import '@/assets/styles/index.scss'
 // 引入样式 ElMessage
 import 'element-plus/theme-chalk/src/message.scss'
+import 'element-plus/theme-chalk/src/loading.scss'
 
 const app = createApp(App)
 

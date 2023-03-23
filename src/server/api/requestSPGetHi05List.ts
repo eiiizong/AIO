@@ -1,7 +1,12 @@
 // import type { W017SuccessResult } from '@/server/types'
 import { request } from '@/server/axios'
 
-const requestSPGetHi05List = (pageNo: number, pageSize: number, isShowLoading = true) => {
+const requestSPGetHi05List = (
+  pageNo: number,
+  pageSize: number,
+  isShowLoading = true,
+  isShowErrorMsg = true
+) => {
   const data = {
     methodNamedesc: '获取审批系统政策文件列表',
     methodName: 'getHi05List',
@@ -11,7 +16,16 @@ const requestSPGetHi05List = (pageNo: number, pageSize: number, isShowLoading = 
   }
 
   return new Promise((resolve, reject) => {
-    request('/frontRestService/frontBcpDataRestService/getWebServiceDataTwo', data, isShowLoading)
+    request(
+      '/frontRestService/frontBcpDataRestService/getWebServiceDataTwo',
+      data,
+      null,
+      60000,
+      'POST',
+      null,
+      isShowLoading,
+      isShowErrorMsg
+    )
       .then((res) => {
         resolve(res)
       })

@@ -1,6 +1,6 @@
 // index.ts
 import axios, { AxiosRequestConfig, Method, AxiosInstance } from 'axios'
-import { ElMessage } from 'element-plus'
+import { ElMessage, ElLoading } from 'element-plus'
 
 import { getEnvData } from '@/utils/get'
 import { useStoreUserInfo } from '@/stores/modules'
@@ -50,6 +50,7 @@ const apiRequstUrl = getEnvData('VITE_API_REQUEST_URL')
 
 const pending: Array<Pending> = []
 
+let loading: unknown = null
 /**
  * 取消重复请求
  */
@@ -112,11 +113,24 @@ instance.interceptors.request.use(
   (config) => {
     // eslint-disable-next-line no-console
     console.log('interceptors.request config=> ', config)
+    removePending(config)
 
+    const { isShowLoading, loadingConfig } = config
     const storeUserInfo = useStoreUserInfo()
     const { userInfo } = storeUserInfo
 
-    removePending(config)
+    if (isShowLoading) {
+      if (loadingConfig) {
+        loading = ElLoading.service(loadingConfig)
+      } else {
+        loading = ElLoading.service({
+          lock: true,
+          text: 'Loading',
+          background: 'rgba(0, 0, 0, 0.7)'
+        })
+      }
+    }
+
     config.cancelToken = new CancelToken((callback) => {
       const { url, method, params, data } = config
       pending.push({
@@ -151,8 +165,10 @@ instance.interceptors.response.use(
     removePending(config)
     // 状态码正常 请求成功
     if (status === 200) {
+      loading.close()
       return Promise.resolve(data)
     } else {
+      loading.close()
       return Promise.reject(res)
     }
   },

@@ -1,7 +1,8 @@
+import type { LoadingOptions } from 'element-plus'
+
 import axios from './axios'
 import { AES_Encrypt } from './aes'
 import { getEnvData } from '@/utils/get'
-// import qs from 'qs'
 
 /**
  * 网络请求
@@ -20,7 +21,7 @@ const request = (
   headers: any = null,
   timeout = 3000,
   method = 'POST',
-  loadingConfig = null,
+  loadingConfig: LoadingOptions | null = null,
   isShowLoading = true,
   isShowErrorMsg = true
 ): Promise<any> => {
@@ -32,7 +33,7 @@ const request = (
 
   // params 统一添加默认参数
   params = {
-    ...params,
+    ...(params || {}),
     chb004: '02' // 调用渠道
   }
 
