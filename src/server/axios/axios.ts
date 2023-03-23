@@ -17,36 +17,30 @@ interface Pending {
   cancel: any
 }
 
-// declare namespace Api {
+/**
+ * 接口调用成功或者失败返回的数据格式
+//  */
+// interface RequestResponseReslut<T> {
 //   /**
-//    * 接口调用错误
+//    * 状态码 200 成功
 //    */
-//   interface RequestResponseReslutError {
-//     id: string
-//     msg: string
-//   }
-
+//   code?: number
 //   /**
-//    * 定义所有接口返回的数据类型
+//    * 数据
 //    */
-//   export interface RequestResponseReslut<T> {
-//     /**
-//      * 状态码 200 成功
-//      */
-//     code?: number
-//     /**
-//      * 数据
-//      */
-//     data?: T
-//     /**
-//      * true 成功
-//      */
-//     serviceSuccess?: boolean
-//     /**
-//      * 错误信息
-//      */
-//     message?: string
-//   }
+//   data?: T
+//   /**
+//    * 框架错误信息
+//    */
+//   errors: any[]
+//   /**
+//    * 服务器调用结果 true 成功
+//    */
+//   serviceSuccess?: boolean
+//   /**
+//    * 请求id
+//    */
+//   requestId?: string
 // }
 
 /**
@@ -152,15 +146,14 @@ instance.interceptors.request.use(
  * 响应拦截器
  */
 instance.interceptors.response.use(
-  (config) => {
-    console.log('instance.interceptors.response', config)
-
-    removePending(config.config)
-    // 请求成功
-    if (config.status === 200 || config.status === 204) {
-      return Promise.resolve(config)
+  (res) => {
+    const { config, data, status } = res
+    removePending(config)
+    // 状态码正常 请求成功
+    if (status === 200) {
+      return Promise.resolve(data)
     } else {
-      return Promise.reject(config)
+      return Promise.reject(res)
     }
   },
 

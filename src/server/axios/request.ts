@@ -74,9 +74,11 @@ const request = (
 
     promise
       .then((res) => {
+        console.log(res, 987)
+
         const { data, status } = res
         if (status === 200) {
-          console.log(data, 12312432424)
+          console.log(data, 1231243248888824)
           resolve(data)
         } else {
           reject(res)
