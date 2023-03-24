@@ -18,39 +18,13 @@ interface Pending {
 }
 
 /**
- * 接口调用成功或者失败返回的数据格式
-//  */
-// interface RequestResponseReslut<T> {
-//   /**
-//    * 状态码 200 成功
-//    */
-//   code?: number
-//   /**
-//    * 数据
-//    */
-//   data?: T
-//   /**
-//    * 框架错误信息
-//    */
-//   errors: any[]
-//   /**
-//    * 服务器调用结果 true 成功
-//    */
-//   serviceSuccess?: boolean
-//   /**
-//    * 请求id
-//    */
-//   requestId?: string
-// }
-
-/**
  * 请求地址前缀
  */
 const apiRequstUrl = getEnvData('VITE_API_REQUEST_URL')
 
 const pending: Array<Pending> = []
 
-let loading: unknown = null
+let loading: any = null
 /**
  * 取消重复请求
  */
@@ -119,6 +93,7 @@ instance.interceptors.request.use(
     const storeUserInfo = useStoreUserInfo()
     const { userInfo } = storeUserInfo
 
+    // 是否显示加载中动画
     if (isShowLoading) {
       if (loadingConfig) {
         loading = ElLoading.service(loadingConfig)
@@ -145,6 +120,7 @@ instance.interceptors.request.use(
     // 但是即使token存在，也有可能token是过期的，所以在每次的请求头中携带token
     // 后台根据携带的token判断用户的登录情况，并返回给我们对应的状态码
     // 而后我们可以在响应拦截器中，根据状态码进行一些统一的操作。
+    // 如果存在token，请求头则携带token
     if (userInfo.token) {
       config.headers.authorization = 'Bearer ' + userInfo.token
     }
@@ -164,11 +140,11 @@ instance.interceptors.response.use(
     const { config, data, status } = res
     removePending(config)
     // 状态码正常 请求成功
-    if (status === 200) {
-      loading.close()
-      return Promise.resolve(data)
+    if (status === 200 && data) {
+      loading && loading.close && loading.close()
+      return Promise.resolve(res)
     } else {
-      loading.close()
+      loading && loading.close && loading.close()
       return Promise.reject(res)
     }
   },

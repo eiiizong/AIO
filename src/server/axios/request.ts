@@ -5,6 +5,34 @@ import { AES_Encrypt } from './aes'
 import { getEnvData } from '@/utils/get'
 
 /**
+ * 接口调用成功或者失败返回的数据格式
+ */
+interface RequestResponseReslut<T> {
+  /**
+   * 状态码 200 成功
+   */
+  code?: number
+  /**
+   * 数据
+   */
+  data?: {
+    resultData: T
+  }
+  /**
+   * 框架错误信息
+   */
+  errors?: any[]
+  /**
+   * 服务器调用结果 true 成功
+   */
+  serviceSuccess?: boolean
+  /**
+   * 请求id
+   */
+  requestId?: string
+}
+
+/**
  * 网络请求
  * @param url 用于请求的服务器 URL
  * @param params 与请求一起发送的 URL 参数，必须是一个简单对象或 URLSearchParams 对象｜作为请求体被发送的数据
@@ -75,18 +103,24 @@ const request = (
 
     promise
       .then((res) => {
-        console.log(res, 987)
+        const { data } = res
 
-        const { data, status } = res
-        if (status === 200) {
-          console.log(data, 1231243248888824)
-          resolve(data)
+        let resData: RequestResponseReslut<any> = {}
+
+        resData = { ...(data as RequestResponseReslut<any>) }
+
+        const { code, data: apiData } = resData
+        if (code == 200 && apiData) {
+          resolve(apiData.resultData)
         } else {
-          reject(res)
+          reject(resData)
         }
       })
       .catch((err: any) => {
         reject(err)
+      })
+      .finally(() => {
+        console.log(1234)
       })
   })
 }
