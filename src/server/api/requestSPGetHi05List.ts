@@ -1,4 +1,4 @@
-// import type { W017SuccessResult } from '@/server/types'
+import type { SPGetHi05ListSuccessResult } from '@/server/types'
 import { request } from '@/server/axios'
 
 const requestSPGetHi05List = (
@@ -6,7 +6,7 @@ const requestSPGetHi05List = (
   pageSize: number,
   isShowLoading = true,
   isShowErrorMsg = true
-) => {
+): Promise<SPGetHi05ListSuccessResult> => {
   const data = {
     methodNamedesc: '获取审批系统政策文件列表',
     methodName: 'getHi05List',
