@@ -6,7 +6,8 @@ const routeDemo = {
   component: () => import('@/views/demo/index.vue'),
   meta: {
     title: '示例',
-    requireAuth: false
+    requireAuth: false,
+    isKeepAlive: false
   },
   children: [
     {
@@ -14,7 +15,8 @@ const routeDemo = {
       component: () => import('@/views/demo/children/use-axios.vue'),
       meta: {
         title: '示例 use-axios',
-        requireAuth: false
+        requireAuth: false,
+        isKeepAlive: true
       }
     },
     {
@@ -22,7 +24,8 @@ const routeDemo = {
       component: () => import('@/views/demo/children/use-echart-pie.vue'),
       meta: {
         title: '示例 echart-pie',
-        requireAuth: false
+        requireAuth: false,
+        isKeepAlive: true
       }
     },
     {
@@ -30,7 +33,8 @@ const routeDemo = {
       component: () => import('@/views/demo/children/use-element-plus.vue'),
       meta: {
         title: '示例 use-element-plus',
-        requireAuth: false
+        requireAuth: false,
+        isKeepAlive: true
       }
     },
     {
@@ -38,7 +42,8 @@ const routeDemo = {
       component: () => import('@/views/demo/children/use-language.vue'),
       meta: {
         title: '示例 use-language',
-        requireAuth: false
+        requireAuth: false,
+        isKeepAlive: true
       }
     },
     {
@@ -46,7 +51,8 @@ const routeDemo = {
       component: () => import('@/views/demo/children/use-pinia.vue'),
       meta: {
         title: '示例 use-pinia',
-        requireAuth: false
+        requireAuth: false,
+        isKeepAlive: true
       }
     },
     {
@@ -54,7 +60,8 @@ const routeDemo = {
       component: () => import('@/views/demo/children/use-theme.vue'),
       meta: {
         title: '示例 use-theme',
-        requireAuth: false
+        requireAuth: false,
+        isKeepAlive: true
       }
     },
     {
@@ -62,7 +69,8 @@ const routeDemo = {
       component: () => import('@/views/demo/children/use-theme.vue'),
       meta: {
         title: '示例 use-theme',
-        requireAuth: false
+        requireAuth: false,
+        isKeepAlive: true
       }
     }
   ]

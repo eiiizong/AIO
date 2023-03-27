@@ -6,7 +6,8 @@ const routeServerInternalError = {
   component: () => import('@/views/server-internal-error/index.vue'),
   meta: {
     title: '服务器内部错误',
-    requireAuth: false
+    requireAuth: false,
+    isKeepAlive: false
   }
 }
 export default routeServerInternalError

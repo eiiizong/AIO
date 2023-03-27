@@ -12,7 +12,8 @@ const routeHome = [
     component: () => import('@/views/home/index.vue'),
     meta: {
       title: '首页',
-      requireAuth: false
+      requireAuth: false,
+      isKeepAlive: false
     },
     children: []
   }

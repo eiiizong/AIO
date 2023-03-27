@@ -6,7 +6,8 @@ const routeNotFound = {
   component: () => import('@/views/not-found/index.vue'),
   meta: {
     title: '404',
-    requireAuth: false
+    requireAuth: false,
+    isKeepAlive: false
   }
 }
 export default routeNotFound
