@@ -12,9 +12,11 @@ import i18n from '@/languages'
 import 'normalize.css/normalize.css'
 // 全局公用样式
 import '@/assets/styles/index.scss'
-// 引入样式 ElMessage
+// 引入样式 ElMessage ElLoading
 import 'element-plus/theme-chalk/src/message.scss'
 import 'element-plus/theme-chalk/src/loading.scss'
+// 引入样式 nprogress
+import 'nprogress/nprogress.css'
 
 const app = createApp(App)
 
