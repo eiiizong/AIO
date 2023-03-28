@@ -5,6 +5,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import eslintPlugin from 'vite-plugin-eslint'
+import { fa } from 'element-plus/es/locale'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -56,7 +57,8 @@ export default defineConfig(({ mode }) => {
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api/, '')
         }
-      }
+      },
+      hmr: true
     }
   }
 })

@@ -3,19 +3,19 @@
     <div class="cell">
       <img :src="imageIcon01" alt="" class="icon" />
       <div class="key">服务</div>
-      <div class="value">234，1</div>
+      <div class="value AlibabaPuHuiTi">2,143</div>
       <div class="unit">人次</div>
     </div>
     <div class="cell">
       <img :src="imageIcon02" alt="" class="icon" />
       <div class="key">申报</div>
-      <div class="value">234，1</div>
+      <div class="value AlibabaPuHuiTi">2,143</div>
       <div class="unit">人次</div>
     </div>
     <div class="cell">
       <img :src="imageIcon03" alt="" class="icon" />
       <div class="key">查询</div>
-      <div class="value">234，1</div>
+      <div class="value AlibabaPuHuiTi">2,143</div>
       <div class="unit">人次</div>
     </div>
   </div>
