@@ -7,11 +7,12 @@
     :experimental-features="configProviderData.experimentalFeatures"
     :namespace="configProviderData.namespace"
     :size="configProviderData.size">
-    <RouterView />
+    <LayoutDefult />
   </el-config-provider>
 </template>
 
 <script setup lang="ts">
+  import LayoutDefult from '@/layouts/default/index.vue'
   import { watchEffect, reactive, toRefs, watch } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useStoreLanguage } from '@/stores/modules'
