@@ -1,10 +1,10 @@
 <template>
   <div class="default-header" :style="styleHeader">
-    <div class="address">
+    <div class="address item">
       <img :src="imageAddress" alt="" />
       <span>达川区</span>
     </div>
-    <div class="old-people">
+    <div class="old-people item">
       <img :src="imageOldPeople" alt="" />
       <span>长者模式</span>
     </div>
@@ -34,38 +34,34 @@
     background-position: top center;
     background-size: cover;
     position: relative;
-    .address {
+    .item {
       position: absolute;
-      top: 20px;
-      left: 40px;
-      border-radius: 26px;
-      font-size: 16px;
+      top: 0;
+      height: 2.75rem;
+      margin-top: calc((5.125rem - 2.75rem) / 2);
+      border-radius: 26rem;
+      font-size: 1rem;
       color: #ffffff;
       font-weight: 500;
       border: solid 1px rgba(255, 255, 255, 0.24);
-      padding: 10px 20px;
+      padding: 0 1.25rem;
       display: flex;
       align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      user-select: none;
       img {
-        width: 18px;
+        width: 1.125rem;
         margin-right: 8px;
       }
-    }
-    .old-people {
-      position: absolute;
-      top: 20px;
-      right: 40px;
-      border-radius: 26px;
-      font-size: 16px;
-      color: #ffffff;
-      font-weight: 500;
-      border: solid 1px rgba(255, 255, 255, 0.24);
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      img {
-        width: 20px;
-        margin-right: 8px;
+      &.address {
+        left: 2.5rem;
+      }
+      &.old-people {
+        right: 2.5rem;
+        img {
+          width: 1.25rem;
+        }
       }
     }
   }
