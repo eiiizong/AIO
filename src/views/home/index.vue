@@ -1,11 +1,36 @@
 <template>
-  <div class="home">1234343433</div>
+  <div class="home">
+    <Statistics />
+    <div class="main">
+      <div class="wrapper">
+        <HandlingServices />
+      </div>
+      <div class="wrapper">
+        <QueryServices />
+      </div>
+      <div class="wrapper">
+        <RecommendedServices />
+        <QR />
+      </div>
+    </div>
+    <Robot />
+  </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import Statistics from './statistics.vue'
+  import HandlingServices from './HandlingServices.vue'
+  import QueryServices from './QueryServices.vue'
+  import RecommendedServices from './RecommendedServices.vue'
+  import QR from './QR.vue'
+  import Robot from './Robot.vue'
+</script>
 
 <style lang="scss" scoped>
   .home {
     width: 100%;
+    background-color: rgba(#fff, 0.2);
+    padding-left: 100px;
+    padding-top: 148px - 116px;
   }
 </style>

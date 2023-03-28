@@ -36,7 +36,6 @@
     .default-main {
       flex: 1;
       overflow: hidden;
-      background-color: #f00;
     }
   }
 </style>
