@@ -1,55 +1,22 @@
 <template>
-  <div class="home-handling-service">
-    <!-- <div class="title" :style="styleNavTitle">业务办理服务</div> -->
+  <div class="service-nav">
+    <!-- <div class="title" :style="styleNavTitle">业务查询服务</div> -->
     <div class="title" :style="styleNavTitle"></div>
     <div class="con">
-      <div class="item">
-        <img :src="imageNav01" alt="" />
+      <div class="item" v-for="item in renderList" :key="item.id" @click="onClickItem(item)">
+        <img :src="item.bgImgSrc" alt="" />
         <div class="inner">
           <div class="name">
-            <span class="text">我要申报</span>
+            <span class="text">{{ item.name }}</span>
             <span class="icon" :style="styleArrow"></span>
           </div>
           <div class="desc">
-            <span>当前有个</span>
-            <span class="val">43</span>
-            <span>项目可以在线申报</span>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <img :src="imageNav02" alt="" />
-        <div class="inner">
-          <div class="name">
-            <span class="text">我要查明白折</span>
-            <span class="icon" :style="styleArrow"></span>
-          </div>
-          <div class="desc">
-            <span>身份证、社保卡放在一体机上就可以查询补贴明细</span>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <img :src="imageNav03" alt="" />
-        <div class="inner">
-          <div class="name">
-            <span class="text">我要办社会保障卡</span>
-            <span class="icon" :style="styleArrow"></span>
-          </div>
-          <div class="desc">
-            <span>社保卡，连心卡，民生卡</span>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <img :src="imageNav04" alt="" />
-        <div class="inner">
-          <div class="name">
-            <span class="text">我要投诉举报</span>
-            <span class="icon" :style="styleArrow"></span>
-          </div>
-          <div class="desc">
-            <span>在线举报违规行为</span>
+            <span
+              v-for="(descItem, descIndex) in item.desc"
+              :class="descItem.class"
+              :key="descIndex">
+              {{ descItem.text }}
+            </span>
           </div>
         </div>
       </div>
@@ -58,18 +25,41 @@
 </template>
 
 <script setup lang="ts">
-  import imageArrow from './images/arrow.png'
-  import imageNavTitle01 from './images/nav-title-01.png'
-  import imageNav01 from './images/nav-01.png'
-  import imageNav02 from './images/nav-02.png'
-  import imageNav03 from './images/nav-03.png'
-  import imageNav04 from './images/nav-04.png'
+  import imageArrow from '../images/arrow.png'
 
+  import type { PropType } from 'vue'
   import { computed } from 'vue'
+
+  const props = defineProps({
+    /**
+     * 渲染数据
+     */
+    renderList: {
+      type: Array as PropType<any[]>,
+      required: true
+    },
+    /**
+     * 标题名称
+     */
+    title: {
+      type: String,
+      required: true
+    },
+    /**
+     * 标题名称背景图片链接
+     */
+    titleBgSrc: {
+      type: String,
+      required: true
+    }
+  })
 
   const styleNavTitle = computed(() => {
     let str = ''
-    str += ` background-image: url(${imageNavTitle01});`
+    const { titleBgSrc } = props
+    if (titleBgSrc) {
+      str += ` background-image: url(${titleBgSrc});`
+    }
     return str
   })
 
@@ -78,14 +68,19 @@
     str += ` background-image: url(${imageArrow});`
     return str
   })
+
+  const onClickItem = (item: any) => {
+    console.log(item)
+  }
 </script>
 
 <style lang="scss" scoped>
-  .home-handling-service {
+  .service-nav {
     width: 516px;
     background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.7) 0%, #ffffff 100%);
     border-radius: 4px;
     padding: 2px;
+    margin-left: 40px;
     .title {
       width: 100%;
       height: 70px;
@@ -146,7 +141,7 @@
             font-size: 15px;
             line-height: 20px;
             margin-top: 8px;
-            .val {
+            .value {
               font-size: 19px;
               color: #fff;
               font-weight: 700;
