@@ -30,7 +30,13 @@
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover;
-    position: relative;
-    padding-bottom: 89px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    .default-main {
+      flex: 1;
+      overflow: hidden;
+      background-color: #f00;
+    }
   }
 </style>

@@ -63,4 +63,5 @@
   // 字体文件引入
   @import '@/assets/iconfont/index.scss';
   @import '@/assets/styles/index.scss';
+  @import '@/assets/fonts/AlibabaPuHuiTi/AlibabaPuHuiTi.scss';
 </style>

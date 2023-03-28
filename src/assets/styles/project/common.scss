@@ -8,3 +8,10 @@
 #nprogress .bar {
   background: #f811b2 !important; //自定义颜色
 }
+
+button {
+  transition: all 0.3s;
+  &:hover {
+    opacity: 0.8;
+  }
+}

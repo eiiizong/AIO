@@ -1,18 +1,99 @@
 <template>
   <div class="default-footer" :style="styleFooter">
-    <!-- <div class="title">达州市惠民惠农“一卡通”智能服务站</div> -->
+    <div class="left">
+      <div class="cells">
+        <div class="cell">
+          <div class="key">终端设备编号：</div>
+          <div class="value">YH00001</div>
+        </div>
+      </div>
+      <div class="cells">
+        <div class="cell">
+          <div class="key">建设单位：</div>
+          <div class="value">达州市财政局</div>
+        </div>
+        <div class="cell">
+          <div class="key">技术支持：</div>
+          <div class="value">四川久远银海软件股份有限公司</div>
+        </div>
+      </div>
+    </div>
+    <div class="center">
+      <!-- 已登陆 -->
+      <div class="logged-in">
+        <!-- <button class="button">退出登陆</button> -->
+      </div>
+      <!-- 未登陆 -->
+      <div class="not-logged-in">
+        <button class="button">立即登录</button>
+      </div>
+    </div>
+    <div class="right">
+      <div class="cells">
+        <div class="cell">{{ nowDate }}</div>
+        <div class="cell AlibabaPuHuiTi">{{ nowTime }}</div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
   import imageBgFooter from './images/bg-footer.png'
 
-  import { computed } from 'vue'
+  import { computed, ref, onMounted } from 'vue'
+  import moment from 'moment'
+
+  const nowDate = ref('')
+  const nowTime = ref('')
+  const timer = ref<any>(null)
 
   const styleFooter = computed(() => {
     let str = ''
     str += ` background-image: url(${imageBgFooter});`
     return str
+  })
+
+  // 获取当前时间
+  const getNowDate = () => {
+    let str: string = moment().format('YYYY年MM月DD日')
+    let weekNumber = moment().day()
+
+    let week = '' // 星期
+    switch (weekNumber) {
+      case 1:
+        week = '星期一'
+        break
+      case 2:
+        week = '星期二'
+        break
+      case 3:
+        week = '星期三'
+        break
+      case 4:
+        week = '星期四'
+        break
+      case 5:
+        week = '星期五'
+        break
+      case 6:
+        week = '星期六'
+        break
+      case 0:
+        week = '星期日'
+        break
+      default:
+        break
+    }
+
+    nowDate.value = `${str}  ${week}`
+    nowTime.value = moment().format('HH:mm:ss')
+  }
+
+  onMounted(() => {
+    getNowDate()
+    timer.value = setInterval(() => {
+      getNowDate()
+    }, 1000)
   })
 </script>
 
@@ -23,9 +104,77 @@
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    z-index: 1;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    .left,
+    .right {
+      width: 30%;
+      .cells {
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        .cell {
+          display: flex;
+          align-items: center;
+        }
+      }
+    }
+    .left {
+      font-size: 14px;
+      line-height: 20px;
+      .cells {
+        &:last-child {
+          padding-top: 6px;
+          .cell {
+            &:last-child {
+              padding-left: 34px;
+            }
+          }
+        }
+      }
+    }
+    .center {
+      flex: 1;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .button {
+        width: 164px;
+        height: 64px;
+        background-image: linear-gradient(to top, #ffc700 0%, #ff8c40 100%);
+        border-radius: 60px;
+        color: #fff;
+        font-size: 22px;
+        font-weight: 700;
+        line-height: 52px;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        border: 6px solid #62a9ff;
+        user-select: none;
+        cursor: pointer;
+      }
+    }
+    .right {
+      font-size: 18px;
+      line-height: 24px;
+
+      .cells {
+        justify-content: flex-end;
+        .cell {
+          font-weight: 500;
+          &:last-child {
+            width: 130px;
+            font-size: 28px;
+            line-height: 38px;
+            font-weight: 500;
+            justify-content: flex-end;
+          }
+        }
+      }
+    }
   }
 </style>
