@@ -100,11 +100,12 @@
 <style lang="scss" scoped>
   .default-footer {
     width: 100%;
-    height: 89px;
+    height: 5.375rem;
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover;
     padding: 0 40px;
+    padding: 0 2.5rem;
     display: flex;
     align-items: center;
     white-space: nowrap;
@@ -122,14 +123,14 @@
       }
     }
     .left {
-      font-size: 14px;
-      line-height: 20px;
+      font-size: 0.875rem;
+      line-height: 1.25rem;
       .cells {
         &:last-child {
-          padding-top: 6px;
+          padding-top: 0.375rem;
           .cell {
             &:last-child {
-              padding-left: 34px;
+              padding-left: 2rem;
             }
           }
         }
@@ -142,34 +143,34 @@
       align-items: center;
       justify-content: center;
       .button {
-        width: 164px;
-        height: 64px;
+        width: 10.25rem;
+        height: 4rem;
         background-image: linear-gradient(to top, #ffc700 0%, #ff8c40 100%);
-        border-radius: 60px;
+        border-radius: 60rem;
         color: #fff;
-        font-size: 22px;
+        font-size: 1.375rem;
         font-weight: 700;
-        line-height: 52px;
+        line-height: 3.25rem;
         text-align: center;
         padding: 0;
         margin: 0;
-        border: 6px solid #62a9ff;
+        border: 0.375rem solid #62a9ff;
         user-select: none;
         cursor: pointer;
       }
     }
     .right {
-      font-size: 18px;
-      line-height: 24px;
+      font-size: 1.125rem;
+      line-height: 1.5rem;
 
       .cells {
         justify-content: flex-end;
         .cell {
           font-weight: 500;
           &:last-child {
-            width: 130px;
-            font-size: 28px;
-            line-height: 38px;
+            width: 8.125rem;
+            font-size: 1.75rem;
+            line-height: 2.376rem;
             font-weight: 500;
             justify-content: flex-end;
           }

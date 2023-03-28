@@ -13,10 +13,10 @@
 
 <script setup lang="ts">
   import LayoutDefult from '@/layouts/default/index.vue'
-  import { watchEffect, reactive, toRefs, watch } from 'vue'
+  import { watchEffect, reactive, toRefs, watch, onMounted } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useStoreLanguage } from '@/stores/modules'
-  import { useSetTheme } from '@/hooks'
+  import { useSetTheme, useSetHtmlFontSize } from '@/hooks'
   import { getEnvData } from '@/utils/get'
 
   const { messages, locale } = useI18n()
@@ -44,6 +44,10 @@
     },
     // 添加的实验阶段的功能，所有功能都是默认设置为 false
     experimentalFeatures: {}
+  })
+
+  onMounted(() => {
+    useSetHtmlFontSize()
   })
 
   // 监听主题或者主题色改变

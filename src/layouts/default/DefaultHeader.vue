@@ -29,7 +29,7 @@
 <style lang="scss" scoped>
   .default-header {
     width: 100%;
-    height: 116px;
+    height: 7.25rem;
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover;
